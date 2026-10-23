@@ -6,3 +6,9 @@ def load_image(image_path):
 def green_channel_selection(image):
     blue, green, red = cv.split(image)
     return green
+
+
+def run_preprocessing(image_path):
+    image = load_image(image_path)
+    green = green_channel_selection(image)
+    return green

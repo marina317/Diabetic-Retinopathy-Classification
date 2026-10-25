@@ -7,17 +7,22 @@ import argparse
 def parse():
   parser = argparse.ArgumentParser()
   parser.add_argument("--mode", required = True, choices = ["train", "evaluate", "inference"])
-  parser.add_argument("--input", required = True, help = "path of input image or folder")
-  parser.add_argument("--output", required = True, help = "path to store output")
-  parser.add_argument("--model", help = "model type")
-  parser.add_argument("--model_path", help = "path of model you want to use")
+  parser.add_argument("--data_dir", type=str, default="data/raw", help="Path to dataset directory")
+  parser.add_argument("--model_path", type=str, default="artifacts/model.joblib", help="Path to save or load model")
+  parser.add_argument("--model_name", type=str, default="random_forest", choices=["random_forest", "svm", "decision_tree"])
+  parser.add_argument("--input", type=str, help="Path to a single image or image folder for prediction")
+    
+  return parser.parse_args()
   
-  args = parser.parser_args()
-  return args
 
 
 if __name__ == "__main__":
   args = parse()
-  input_path = Path("args.input")
-  output_path = Path("args.output")
-  
+  if args.mode == "train":
+    #do something
+    x = 5
+  elif args.mode == "evaluate":
+    x = 6
+  elif args.mode == "inference":
+    x = 7
+    
